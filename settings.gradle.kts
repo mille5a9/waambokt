@@ -12,7 +12,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "template"
+rootProject.name = "waambokt"
 
 enableFeaturePreview("VERSION_CATALOGS")
 

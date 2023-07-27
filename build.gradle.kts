@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "template"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     google()
@@ -45,12 +45,12 @@ dependencies {
 
 application {
     // This is deprecated, but the Shadow plugin requires it
-    mainClassName = "template.AppKt"
+    mainClass.set("waambokt.AppKt")
 }
 
 gitHooks {
     setHooks(
-        mapOf("pre-commit" to "detekt")
+        mapOf("pre-commit" to "detekt"),
     )
 }
 
@@ -64,7 +64,7 @@ tasks.withType<KotlinCompile> {
 tasks.jar {
     manifest {
         attributes(
-            "Main-Class" to "template.AppKt"
+            "Main-Class" to "template.AppKt",
         )
     }
 }

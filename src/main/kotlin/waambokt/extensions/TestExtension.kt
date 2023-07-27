@@ -1,4 +1,4 @@
-package template.extensions
+package waambokt.extensions
 
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.converters.impl.coalescingDefaultingString
@@ -10,7 +10,7 @@ import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.utils.respond
 import dev.kord.common.annotation.KordPreview
-import template.TEST_SERVER_ID
+import waambokt.SERVER_ID
 
 @OptIn(KordPreview::class)
 class TestExtension : Extension() {
@@ -42,7 +42,7 @@ class TestExtension : Extension() {
             name = "slap"
             description = "Ask the bot to slap another user"
 
-            guild(TEST_SERVER_ID)  // Otherwise it'll take an hour to update
+            guild(SERVER_ID)
 
             action {
                 // Because of the DslMarker annotation KordEx uses, we need to grab Kord explicitly
