@@ -4,7 +4,7 @@ services:
   waambokt:
     build: .
     restart: unless-stopped
-    container_name: waambokt
+    container_name: waambokt-dev
     env_file:
       - .env
     environment:
