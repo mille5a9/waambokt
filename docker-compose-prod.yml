@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  waambokt:
+    build: .
+    restart: unless-stopped
+    container_name: waambokt
+    env_file:
+      - .env
+    environment:
+      - ENV=PROD

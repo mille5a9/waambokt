@@ -11,7 +11,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-group = "template"
+group = "waambokt"
 version = "1.0"
 
 repositories {
@@ -45,7 +45,7 @@ dependencies {
 
 application {
     // This is deprecated, but the Shadow plugin requires it
-    mainClass.set("waambokt.AppKt")
+    mainClassName = "waambokt.AppKt"
 }
 
 gitHooks {
@@ -56,23 +56,23 @@ gitHooks {
 
 tasks.withType<KotlinCompile> {
     // Current LTS version of Java
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 
-    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 }
 
 tasks.jar {
     manifest {
         attributes(
-            "Main-Class" to "template.AppKt",
+            "Main-Class" to "waambokt.AppKt",
         )
     }
 }
 
 java {
     // Current LTS version of Java
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 detekt {
