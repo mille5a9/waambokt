@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.serialization")
     id("io.gitlab.arturbosch.detekt")
+    id("com.github.johnrengelman.shadow")
 }
 
 group = "waambokt"
