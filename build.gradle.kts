@@ -5,14 +5,12 @@ plugins {
 
     kotlin("jvm")
     kotlin("plugin.serialization")
-
-    id("com.github.jakemarsden.git-hooks")
-    id("com.github.johnrengelman.shadow")
     id("io.gitlab.arturbosch.detekt")
 }
 
 group = "waambokt"
 version = "1.0"
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     google()
@@ -30,28 +28,17 @@ repositories {
 }
 
 dependencies {
-    detektPlugins(libs.detekt)
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0-RC2")
 
-    implementation(libs.kord.extensions)
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.kx.ser)
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.5.6-SNAPSHOT") 
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core")
 
     // Logging dependencies
-    implementation(libs.groovy)
-    implementation(libs.jansi)
-    implementation(libs.logback)
-    implementation(libs.logging)
-}
-
-application {
-    // This is deprecated, but the Shadow plugin requires it
-    mainClassName = "waambokt.AppKt"
-}
-
-gitHooks {
-    setHooks(
-        mapOf("pre-commit" to "detekt"),
-    )
+    implementation("org.codehaus.groovy:groovy:3.0.9")
+    implementation("org.fusesource.jansi:jansi:2.4.0")
+    implementation("ch.qos.logback:logback-classic:1.2.5")
+    implementation("io.github.microutils:kotlin-logging:2.1.23")
 }
 
 tasks.withType<KotlinCompile> {
@@ -61,18 +48,10 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 }
 
-tasks.jar {
+tasks.withType<Jar> {
     manifest {
-        attributes(
-            "Main-Class" to "waambokt.AppKt",
-        )
+        attributes["Main-Class"] = "waambokt.AppKt"
     }
-}
-
-java {
-    // Current LTS version of Java
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 detekt {

@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  waambokt:
+  waambokt-dev:
     build: .
     restart: unless-stopped
     container_name: waambokt-dev
@@ -9,3 +9,9 @@ services:
       - .env
     environment:
       - ENV=DEV
+    networks:
+      - waambokt-dev-network
+
+networks:
+  waambokt-dev-network:
+    driver: bridge
