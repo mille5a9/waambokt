@@ -20,9 +20,7 @@ class TwitterExtension : Extension() {
         event<MessageCreateEvent> {
             action {
                 logger.info { "TwitterExtension: caught MessageCreateEvent" }
-                logger.debug { "debug log here" }
                 val link = linkRegex.find(event.message.content)?.value ?: return@action
-                logger.debug { "TwitterExtension: message has twitter link" }
 
                 // scrape community notes content
                 val result = skrape(HttpFetcher) {
@@ -32,7 +30,6 @@ class TwitterExtension : Extension() {
                         userAgent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
                     }
                     extractIt<ScrapingResult> {
-                        logger.info { "data: ${this.responseBody}" }
                         htmlDocument {
                             findFirst(communityNotesClassString)
                         }.children.forEach { element ->
@@ -58,6 +55,6 @@ class TwitterExtension : Extension() {
         private val logger = KotlinLogging.logger {}
         private const val sixtySecondsInMillis = 60_000
         private const val communityNotesClassString =
-            ".css-901oao.r-18jsvk2.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-1e081e0.r-qvutc0"
+            ".css-901oao.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-1e081e0.r-qvutc0"
     }
 }
