@@ -573,7 +573,7 @@ style:
     ignoreEnums: true
     ignoreRanges: false
   MandatoryBracesIfStatements:
-    active: true
+    active: false
   MandatoryBracesLoops:
     active: true
   MaxLineLength:
