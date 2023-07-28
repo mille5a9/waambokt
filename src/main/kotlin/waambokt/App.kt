@@ -16,11 +16,11 @@ suspend fun main() {
 
     val bot = ExtensibleBot(TOKEN) {
         chatCommands {
-            defaultPrefix = "wb"
+            defaultPrefix = "wb "
             enabled = true
-
-            prefix { if (guildId == SERVER_ID) "!" else it }
         }
+
+        presence { this.listening("your commands") }
 
         extensions {
             add(::TestExtension)

@@ -9,10 +9,8 @@ import com.kotlindiscord.kord.extensions.extensions.chatCommand
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.utils.respond
-import dev.kord.common.annotation.KordPreview
 import waambokt.SERVER_ID
 
-@OptIn(KordPreview::class)
 class TestExtension : Extension() {
     override val name = "test"
 
