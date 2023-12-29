@@ -29,22 +29,22 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0-RC2")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 
-    implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.5.6-SNAPSHOT")
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.6.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core")
-    implementation("it.skrape:skrapeit:1.3.0-alpha.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.2")
+    implementation("it.skrape:skrapeit:1.3.0-alpha.2")
 
     // Logging dependencies
-    implementation("org.codehaus.groovy:groovy:3.0.9")
+    implementation("org.apache.groovy:groovy:4.0.17")
     implementation("org.fusesource.jansi:jansi:2.4.0")
-    implementation("ch.qos.logback:logback-classic:1.3.5")
-    implementation("io.github.microutils:kotlin-logging:2.1.23")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("io.github.microutils:kotlin-logging:3.0.5")
 }
 application {
     // This is deprecated, but the Shadow plugin requires it
-    mainClassName = "waambokt.AppKt"
+    mainClass.set("waambokt.AppKt")
 }
 
 tasks.withType<KotlinCompile> {

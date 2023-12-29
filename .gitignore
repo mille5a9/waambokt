@@ -110,3 +110,4 @@ build/
 
 # Env vars - don't commit this!
 .env
+/.idea/*
