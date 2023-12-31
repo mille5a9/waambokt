@@ -4,6 +4,7 @@ import com.kotlindiscord.kord.extensions.ExtensibleBot
 import com.kotlindiscord.kord.extensions.utils.env
 import dev.kord.common.entity.Snowflake
 import mu.KotlinLogging
+import waambokt.extensions.NbaApiExtension
 import waambokt.extensions.TestExtension
 import waambokt.extensions.TwitterExtension
 
@@ -25,6 +26,7 @@ suspend fun main() {
         extensions {
             add(::TestExtension)
             add(::TwitterExtension)
+            add(::NbaApiExtension)
         }
     }
 

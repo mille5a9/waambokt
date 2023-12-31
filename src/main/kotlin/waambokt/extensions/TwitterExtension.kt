@@ -52,14 +52,18 @@ class TwitterExtension : Extension() {
     }
 
     private fun List<DocElement>.getContent(result: ScrapingResult) = this.forEach {
-        if (it.tagName == "span") result.texts += it.children.first().text
-        else if (it.tagName == "a") result.texts += it.attribute("href")
+        if (it.tagName == "span") {
+            result.texts += it.children.first().text
+        } else if (it.tagName == "a") {
+            result.texts += it.attribute("href")
+        }
     }
 
     companion object {
         private val logger = KotlinLogging.logger {}
         private val linkRegex = """https?://(?:www\.)?twitter\.com/([a-zA-Z0-9_]+)/status/([0-9]+)""".toRegex()
-        private const val AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+        private const val AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+                " Chrome/109.0.0.0 Safari/537.36"
         private const val TIMEOUTMS = 60_000
         private const val EMBEDCOLOR = 0x1DA0F2
     }
