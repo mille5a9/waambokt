@@ -10,6 +10,7 @@ import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.utils.capitalizeWords
+import com.kotlindiscord.kord.extensions.utils.env
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.embed
 import waambokt.SERVER_ID
@@ -25,7 +26,7 @@ class NbaApiExtension : Extension() {
             guild(SERVER_ID)
 
             action {
-                val client = ApiNbaClient(HostEnum.API_SPORTS, System.getenv("NBA_API_KEY"))
+                val client = ApiNbaClient(HostEnum.API_SPORTS, env("NBA_API_KEY"))
                 val response = client.getAccountStatus().response
                 kordLogger.info { "Queried NBA API Account Status: $response" }
                 respond {
@@ -63,7 +64,7 @@ class NbaApiExtension : Extension() {
             guild(SERVER_ID)
 
             action {
-                val client = ApiNbaClient(HostEnum.API_SPORTS, System.getenv("NBA_API_KEY"))
+                val client = ApiNbaClient(HostEnum.API_SPORTS, env("NBA_API_KEY"))
 
                 val response = client.getStandingsByConferenceAndSeason(arguments.conference, arguments.season).response
 
